@@ -1,4 +1,5 @@
 <?php
+require_once 'db/Database.php';
 interface Modelo
 {
     public function findAll();

@@ -1,0 +1,25 @@
+.botones-principales {
+    border: 2px solid black;
+    padding: 30px;
+    background-color: rgb(86, 181, 213);
+    color: black;
+    text-decoration: none;
+}
+
+#menu-principal {
+    display: flex;
+    flex-direction: row;
+
+}
+
+#contenedor {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card {
+    border: 2px solid black;
+    border-radius: 20px;
+    width: 15%;
+}

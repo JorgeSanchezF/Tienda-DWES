@@ -1,16 +1,23 @@
 <?php
 #CONTROLADOR FRONTAL
 require_once 'db/Database.php';
-require_once 'autoload.php';
+require_once 'controllers/AuthController.php';
+require_once 'controllers/CarroController.php';
+require_once 'controllers/JuegoController.php';
 #Creación de BD
 $db = Database::conectar();
 Database::iniciarTablas($db);
 #SESION SE INICIA SI NO EXISTE
-if (empty(session_id())) {
-    session_start();
+//if (empty(session_id())) {
+session_start();
+//}
+
+
+if (!isset($_SESSION['carro'])) {
+    $_SESSION['carro'] = array();
 }
-$carro = array();
-$GLOBALS['carro'] = $carro;
+// $_SESSION['carro'] = array();
+
 
 #RUTAS:
 if (isset($_GET['controller']) && isset($_GET['function'])) {
@@ -33,7 +40,6 @@ if (isset($_GET['controller']) && isset($_GET['function'])) {
         }
     } else {
         echo 'No existe controlador ' . $controller . ' o funcion ' . $function;
-        include 'views/errors/404.php';
     }
 } else {
     include 'views/index.php';

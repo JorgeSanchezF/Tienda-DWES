@@ -33,19 +33,20 @@ class Database
         $query = "CREATE TABLE IF NOT EXISTS juegos(id INTEGER PRIMARY KEY AUTOINCREMENT,nombre TEXT,precio FLOAT)";
 
         $db->exec($query);
+        $query = "CREATE TABLE IF NOT EXISTS usuarios(id INTEGER PRIMARY KEY AUTOINCREMENT,nombre TEXT,contraseña TEXT, rol_id INTEGER)";
+        $db->exec($query);
+        $query = "CREATE TABLE IF NOT EXISTS roles(id INTEGER PRIMARY KEY AUTOINCREMENT,nombre TEXT)";
+        $db->exec($query);
 
-        //  $insert = "INSERT INTO juegos (nombre, precio) VALUES('The Legend of Zelda: Breath of the Wild', 59.99),('Grand Theft Auto V', 39.99),('Red Dead Redemption 2', 49.99),('Minecraft', 26.95),('Highfleet', 19.99),('FIFA 22', 59.99),('Super Mario Odyssey', 49.99),('Call of Duty: Warzone', 0),('Among Us', 4.99),('Cyberpunk 2077', 59.99)";
+        //$insert = "DELETE FROM roles WHERE id=4";
+        // $db->query($insert); //comentar cuando ya haya sido lanzado 1 vez
+        $contraseña = '1234';
+        $hashContraseña = password_hash($contraseña, PASSWORD_DEFAULT); //encripta la contraseña que introduzco con el usuario admin
+        //$insertUsuarios = "INSERT INTO usuarios(nombre,contraseña,rol_id)VALUES('jorge','" . $hashContraseña . "',1)";
+        //$db->query($insertUsuarios); //comentar cuando ya haya sido lanzado 1 vez
 
-        // $db->query($insert);
-
-        //comentado el insert para insertar de nuevo los juegos
-    }
-
-    public static function selectJuegos($db): PDOStatement
-    {
-        $query = "SELECT * FROM juegos;";
-
-        $result = $db->query($query);
-        return $result;
+        //$insert = "INSERT INTO juegos (nombre, precio) VALUES('Highfleet', 19.99),('Lethal Company', 9.89),('Rule the Waves 3', 39.99),('Homeworld 3', 49.99),('Darktide', 39.99),('Alan Wake 2', 59.99),('Cyberpunk 2077', 59.99)";
+        //$db->query($insert);
+        //comentado el insert para no insertar de nuevo los juegos
     }
 }

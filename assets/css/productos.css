@@ -1,0 +1,78 @@
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #202977;
+    margin: 20px;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 36px;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #3498db;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #1a598c;
+}
+
+#contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.card {
+    width: 300px;
+    background-color: #4b4b4f;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 15px;
+    text-align: center;
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.card div {
+    margin: 10px 0;
+}
+
+button.boton-cesta {
+    background-color: #bfcd20;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 3px;
+    
+}
+
+button.boton-cesta:hover {
+    background-color: #4786c0;
+}

@@ -1,6 +1,6 @@
 <?php
 require_once 'Modelo.php';
-require_once 'Database.php';
+require_once 'db/Database.php';
 class Juego implements Modelo
 {
     #ATRIBUTOS:
@@ -42,11 +42,11 @@ class Juego implements Modelo
     #
     public function findAll()
     {
-        $db = Database::conectar();
         $query = "SELECT * FROM juegos;";
-        $resultado = $db->query($query);
+        $db = Database::conectar();
+        $result = $db->query($query);
         $db = Database::desconectar();
-        return $resultado;
+        return $result;
     }
     public function findById($id)
     {
@@ -58,16 +58,25 @@ class Juego implements Modelo
     }
     public function store($datos)
     {
-        #no se usa en este caso ya que los juegos ya estan introducidos y no se van a cambiar
+        $nombre = $datos["nombre"];
+        $precio = $datos["precio"];
+        $query = "INSERT INTO juegos (nombre, precio) VALUES ('$nombre','$precio')";
+        $db = Database::conectar();
+        $db->exec($query);
+        $db = Database::desconectar();
     }
     public function updateById($id, $datos)
     {
-        #no se usa en este caso ya que los juegos ya estan introducidos y no se van a cambiar
-
+        $query = "UPDATE FROM juegos (nombre, precio) SET (nombre =" . $datos['nombre'] . ", precio =" .  $datos['precio'] . ") WHERE id=" . $id . "";
+        $db = Database::conectar();
+        $db->exec($query);
+        $db = Database::desconectar();
     }
     public function destroyById($id)
     {
-        #no se usa en este caso ya que los juegos ya estan introducidos y no se van a cambiar
-
+        $query = "DELETE FROM juegos WHERE id=" . $id . "";
+        $db = Database::conectar();
+        $db->exec($query);
+        $db = Database::desconectar();
     }
 }

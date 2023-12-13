@@ -1,41 +1,75 @@
 <?php
-require_once 'Controller.php';
-require_once 'db/Database.php';
 
-class CarroController implements Controller
+class CarroController
 {
 
-    public static function index()
+    public static function index() //ok
     {
 
+        if (isset($_SESSION['user'])) {
 
-        include 'views/index.php';
+            $carrito = $_SESSION['carro'][$_SESSION['user']['id']];
+
+            include 'views/Carro/index.php';
+        } else {
+            header('Location:?controller=auth&function=login');
+        }
     }
-    public static function create()
+
+
+    public static function save()
     {
-        //no se usa??
-    }
-    public static function save($datos)
-    {
-        $true = null;
-        foreach ($GLOBALS['carro'] as $key => $value) {
-            if ($value['nombre'] == $datos['nombre']) {
-                $true = 1;
+        $noRepite = true;
+        $id = $_POST['id'];
+        $nombre = $_POST['nombre'];
+        $precio = $_POST['precio'];
+
+        $nuevoJuego = array(
+            'id' => $id,
+            'nombre' => $nombre,
+            'precio' => $precio,
+            'cantidad' => 1
+        );
+
+        $idUsuario = $_SESSION['user']['id'];
+
+        if (empty($_SESSION['carro'])) {
+            $_SESSION['carro'][$idUsuario][] = $nuevoJuego;
+        } else {
+            // AQUÍ BUSCAMOS SI SE REPITE Y SUMAMOS LA CANTIDAD
+            $carroDeUsuario = $_SESSION['carro'][$idUsuario];
+
+            foreach ($carroDeUsuario as $key => $juego) {
+                if ($juego['id'] == $nuevoJuego['id']) {
+                    $cantidad = $_SESSION['carro'][$idUsuario][$key]['cantidad'] + 1;
+                    $_SESSION['carro'][$idUsuario][$key]['cantidad'] = $cantidad;
+                    $noRepite = false;
+                    break;
+                }
+            }
+
+            if ($noRepite) {
+                $_SESSION['carro'][$idUsuario][] = $nuevoJuego;
             }
         }
-        if ($true == 0) {
-            array_push($carro, $datos); //introduce array dentro de el carro
-        } else {
-            $GLOBALS['carro']['cantidad'] = ['cantidad'] + 1;
+
+        header('Location: ?controller=carro&function=index');
+        exit;
+    }
+
+
+    public static function destroy($id) //ok
+    {
+        $idUsuario = $_SESSION['user']['id'];
+        $carroDeUsuario = $_SESSION['carro'][$idUsuario];
+        for ($i = 0; $i < count($carroDeUsuario); $i++) {
+
+            if ($carroDeUsuario[$i]['id'] == $id) {
+                unset($_SESSION['carro'][$idUsuario][$i]);
+                $_SESSION['carro'][$idUsuario] = array_values($_SESSION['carro'][$idUsuario]);
+            }
         }
-    }
-    public static function edit()
-    {
-    }
-    public static function update($id)
-    {
-    }
-    public static function destroy($id)
-    {
+
+        header('Location:?controller=carro&function=index');
     }
 }
