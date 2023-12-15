@@ -1,23 +1,28 @@
-/* Estilos generales */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
+html {
+    background-color: #3838be;
+    width: 100%;
 }
 
-/* Estilos para la página Home */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #4d4a4add;
+    margin: 0;
+    padding: 0;
+    width: fit-content;
+    margin-left: 15px;
+}
+
 main {
     max-width: 800px;
     margin: 20px auto;
-    background-color: #fff;
+    background-color: #6b6767;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
 h1 {
-    color: #3498db;
+    color: #e74c3c;
 }
 
 a {
@@ -28,4 +33,12 @@ a {
 
 a:hover {
     color: #1a598c;
+}
+
+a.admin {
+    color: #e74c3c;
+}
+
+a.admin:hover {
+    color: #c0392b;
 }

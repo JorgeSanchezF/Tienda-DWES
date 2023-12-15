@@ -7,6 +7,9 @@ class CarroController
     {
 
         if (isset($_SESSION['user'])) {
+            if (!isset($_SESSION['carro'][$_SESSION['user']['id']])) {
+                $_SESSION['carro'][$_SESSION['user']['id']] = array();
+            }
 
             $carrito = $_SESSION['carro'][$_SESSION['user']['id']];
 

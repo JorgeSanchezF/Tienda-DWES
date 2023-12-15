@@ -1,0 +1,28 @@
+html {
+    background-color: #3838be;
+    ;
+    width: 100%;
+}
+
+#menu-principal {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+
+}
+
+.botones-principales {
+    border: 2px solid black;
+    padding: 30px;
+    background-color: rgb(86, 181, 213);
+    color: black;
+    text-decoration: none;
+    margin: 80px;
+    border-radius: 20px;
+}
+
+.botones-principales:hover {
+    background-color: lightslategray;
+    box-shadow: 5px 5px 5px 5px;
+}

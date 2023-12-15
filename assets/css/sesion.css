@@ -1,0 +1,50 @@
+html {
+    background-color: #3838be;
+    width: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+a {
+    text-decoration: none;
+    background-color: rgb(86, 181, 213);
+    color: black;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 20px;
+    width: 50px;
+}
+
+a:hover {
+    background-color: lightslategray;
+    box-shadow: 5px 5px 5px 5px;
+}
+
+form {
+
+    margin-top: 40px;
+    border: 2px solid white;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    background-color: lightslategrey;
+    width: 50%;
+    height: 150px;
+    justify-content: center;
+    margin-left: 25%;
+}
+
+input {
+    width: 50%;
+    margin-left: 20%;
+}
+
+label {
+    color: black;
+    font-family: sans-serif;
+    margin-left: 20%;
+}

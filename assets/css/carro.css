@@ -22,7 +22,7 @@ a:hover {
     color: #1a598c;
 }
 
-/* Estilos para la tabla */
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -44,7 +44,7 @@ tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-/* Estilos para el total */
+
 .total {
     font-size: 18px;
     font-weight: bold;

@@ -4,12 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Inicio Sesion</title>
+    <link rel="stylesheet" href="assets/css/sesion.css">
 </head>
 <?php if (empty(session_id())) {
     session_start();
 }
-    ?>
+?>
+
 <body>
     <a href="?">Volver a inicio</a>
     <form action="?controller=auth&function=doLogin" method="post">
