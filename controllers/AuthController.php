@@ -69,4 +69,15 @@ class AuthController
         // session_destroy();
         header('Location: ?');
     }
+    public static function tablaUsuarios()
+    {
+        if ($_SESSION['user']['rol_id'] == 1) {
+            $usuario = new Usuario();
+            $usuarios = $usuario->findAll()->fetchAll();
+
+            include 'views/private/Usuarios/tablaUsuarios.php';
+        } else {
+            header('Location: ?controller=auth&function=home');
+        }
+    }
 }
