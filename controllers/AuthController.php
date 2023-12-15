@@ -65,7 +65,7 @@ class AuthController
     }
     public static function cerrarSesion() //cierra sesion y envia a pagina principal
     {
-        unset($_SESSION);
+        unset($_SESSION['user']);
         // session_destroy();
         header('Location: ?');
     }
